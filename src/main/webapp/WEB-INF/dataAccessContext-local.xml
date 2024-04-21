@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
-
 <!--
   - Application context definition for JPetStore's data access layer.
   - Accessed by business layer objects defined in "applicationContext.xml"
@@ -10,7 +8,11 @@
   - using a local DataSource with DataSourceTransactionManager. It does not
   - need any JTA support in the container: It will run as-is in plain Tomcat.
   -->
-<beans>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
 	<!-- ========================= RESOURCE DEFINITIONS ========================= -->
 
@@ -66,11 +68,11 @@
 	<!-- OrderDao definition for MS SQL Server -->
 	<!-- (to be used instead of the default orderDao) -->
 	<!--
-	<bean id="orderDao" class="org.springframework.samples.jpetstore.dao.ibatis.MsSqlOrderDao">
-		<property name="sqlMapClient" ref="sqlMapClient"/>
-		<property name="sequenceDao" ref="sequenceDao"/>
-	</bean>
-	-->
+    <bean id="orderDao" class="org.springframework.samples.jpetstore.dao.ibatis.MsSqlOrderDao">
+        <property name="sqlMapClient" ref="sqlMapClient"/>
+        <property name="sequenceDao" ref="sequenceDao"/>
+    </bean>
+    -->
 
 	<!-- Refers to the combined database here -->
 	<!-- (see dataAccessContext-jta.xml for an alternative) -->
@@ -81,9 +83,9 @@
 	<!-- SequenceDao definition for Oracle databases -->
 	<!-- (to be used instead of the default sequenceDao) -->
 	<!--
-	<bean id="sequenceDao" class="org.springframework.samples.jpetstore.dao.ibatis.OracleSequenceDao">
-		<property name="sqlMapClient" ref="sqlMapClient"/>
-	</bean>
-	-->
+    <bean id="sequenceDao" class="org.springframework.samples.jpetstore.dao.ibatis.OracleSequenceDao">
+        <property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+    -->
 
 </beans>
